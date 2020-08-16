@@ -1,32 +1,12 @@
-<script>
-  let alinafeYellow = "#F4B653";
-  let windowHeight = "500px";
+<script> 
+  let windowHeight;
   let windowWidth;
-
-  $: shapeHeightFactor = windowWidth < 600 ? 0.97 : 0.9;
   $: alinafeArtWidth = windowWidth < 850 ? 400 : 600;
-  $: shapeHeight = windowHeight * shapeHeightFactor;
-  $: topShapeWidth = windowWidth * 0.6;
-  $: bottomShapeWidth = windowWidth * 0.3;
 </script>
 
 <style>
   :global(html) {
     background-color: var(--bg-yellow);
-  }
-
-  div#background-shape {
-    position: absolute;
-    z-index: -100;
-    margin: 3em;
-    left: 0;
-    right: 0;
-  }
-
-  @media screen and (max-width: 600px) {
-    div#background-shape {
-      margin: 1em;
-    }
   }
 
   div#container {
@@ -44,18 +24,6 @@
 
 <svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth} />
 
-<div id="background-shape">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={topShapeWidth}
-    height={shapeHeight}>
-    <path
-      d="M.165 {shapeHeight}V.62h{topShapeWidth}L{bottomShapeWidth}
-      {shapeHeight}z"
-      fill="#BD3B3B"
-      fill-rule="evenodd" />
-  </svg>
-</div>
 <div id="container" style="--window-height: {`${windowHeight}px`}">
   <svg
     width={alinafeArtWidth}
