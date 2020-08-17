@@ -25,13 +25,12 @@
 
   @media screen and (max-width: 600px) {
     div#nav {
-      width: 90%;
-      padding-left: 1em;
+      width: 100%;
+      padding-left: 0em;
     }
   }
   nav {
     font-weight: 300;
-    padding: 0 1em;
   }
 
   ul {
@@ -70,7 +69,7 @@
 
   @media screen and (max-width: 895px) {
     a {
-      padding: 1em 2em;
+      padding: 1em 3em;
     }
   }
 
@@ -82,7 +81,7 @@
 
   @media screen and (max-width: 450px) {
     a {
-      padding: 1em 1.5em;
+      padding: 1em 2em;
     }
   }
 </style>
