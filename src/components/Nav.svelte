@@ -1,5 +1,14 @@
 <script>
+  import { fade } from "svelte/transition";
+  import { onMount } from "svelte";
+
   export let segment;
+  let showNav = false;
+  onMount(() => {
+    setTimeout(() => {
+      showNav = true;
+    }, 500);
+  });
 </script>
 
 <style>
@@ -80,26 +89,28 @@
 
 <div id="nav">
   <nav style="--bg-yellow=var(--bg-yellow)">
-    <ul>
-      <li>
-        <a aria-current={segment === undefined ? 'page' : undefined} href=".">
-          preorder
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={segment === 'preview' ? 'page' : undefined}
-          href="preview">
-          preview
-        </a>
-      </li>
-      <li>
-        <a
-          aria-current={segment === 'preview' ? 'page' : undefined}
-          href="preview">
-          about
-        </a>
-      </li>
-    </ul>
+    {#if showNav}
+      <ul>
+        <li in:fade={{ delay: 500 }}>
+          <a aria-current={segment === undefined ? 'page' : undefined} href=".">
+            preorder
+          </a>
+        </li>
+        <li in:fade={{ delay: 700 }}>
+          <a
+            aria-current={segment === 'preview' ? 'page' : undefined}
+            href="preview">
+            preview
+          </a>
+        </li>
+        <li in:fade={{ delay: 900 }}>
+          <a
+            aria-current={segment === 'preview' ? 'page' : undefined}
+            href="preview">
+            about
+          </a>
+        </li>
+      </ul>
+    {/if}
   </nav>
 </div>

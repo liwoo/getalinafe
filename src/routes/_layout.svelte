@@ -2,7 +2,7 @@
   import Nav from "../components/Nav.svelte";
   import AltNav from "../components/AltNav.svelte";
   import About from "./about.svelte";
-  import { onMount } from "svelte";
+  import { fade } from "svelte/transition";
 
   export let segment;
 
@@ -83,20 +83,9 @@
 
 <div
   id="background-shape"
+  transition:fade
   style="--window-height: {windowHeight}px; --offset-width: {windowWidth * 0.2}px"
-  class:alt={toggle}>
-  <!-- <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={toggle ? windowWidth : windowWidth * 0.9}
-    height={toggle ? windowHeight : shapeHeight}>
-    <path
-      d="M.165 {shapeHeight}V.62h{topShapeWidth}L{bottomShapeWidth}
-      {shapeHeight}z"
-      style="transition: 0.4s;"
-      fill="#BD3B3B"
-      fill-rule="evenodd" />
-  </svg> -->
-</div>
+  class:alt={toggle} />
 {#if toggle}
   <AltNav />
 {:else}
