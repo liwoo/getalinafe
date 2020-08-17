@@ -41,10 +41,26 @@
     position: absolute;
     z-index: -100;
     transition: 0.3s;
+    top: 0;
+    bottom: 0;
+    width: calc(50% - var(--offset-width));
+    border-width: calc(var(--window-height) - 6rem)
+      calc(var(--offset-width) + 10rem) 0 0;
+    margin: 3rem;
+    border-style: solid;
+    border-color: var(--bg-red) transparent transparent transparent;
+  }
+
+  div#background-shape.alt {
+    width: 100%;
+    border-width: var(--window-height) 0 0 0;
+    margin: 0;
   }
 
   @media screen and (max-width: 600px) {
     div#background-shape {
+      border-width: calc(var(--window-height) - 2rem)
+        calc(var(--offset-width) + 5rem) 0 0;
       margin: 1em;
     }
   }
@@ -67,8 +83,9 @@
 
 <div
   id="background-shape"
-  style="margin: {toggle ? `0` : windowWidth < 600 ? `1em` : `3rem`};">
-  <svg
+  style="--window-height: {windowHeight}px; --offset-width: {windowWidth * 0.2}px"
+  class:alt={toggle}>
+  <!-- <svg
     xmlns="http://www.w3.org/2000/svg"
     width={toggle ? windowWidth : windowWidth * 0.9}
     height={toggle ? windowHeight : shapeHeight}>
@@ -78,7 +95,7 @@
       style="transition: 0.4s;"
       fill="#BD3B3B"
       fill-rule="evenodd" />
-  </svg>
+  </svg> -->
 </div>
 {#if toggle}
   <AltNav />
