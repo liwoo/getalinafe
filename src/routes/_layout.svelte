@@ -1,13 +1,18 @@
 <script>
   import Nav from "../components/Nav.svelte";
+  import AltNav from "../components/AltNav.svelte";
+  import About from "./about.svelte";
+  import { onMount } from "svelte";
 
   export let segment;
 
   let alinafeYellow = "#F4B653";
   let windowHeight = "500px";
   let windowWidth;
+  let scrollY;
+
   $: toggle = ["preview", "preorder", "about"].includes(segment);
-  $: shapeHeightFactor = windowWidth < 600 ? 0.97 : 0.9;
+  $: shapeHeightFactor = windowWidth < 600 ? 0.96 : 0.9;
   $: shapeHeight = toggle ? windowHeight : windowHeight * shapeHeightFactor;
   $: topShapeWidth = toggle ? windowWidth : windowWidth * 0.6;
   $: bottomShapeWidth = toggle ? windowWidth : windowWidth * 0.3;
@@ -18,6 +23,13 @@
     position: relative;
     margin: 0 auto;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+
+  div.container {
+    max-width: 600px;
+    margin: 1rem;
   }
 
   :global(:root) {
@@ -29,8 +41,6 @@
     position: absolute;
     z-index: -100;
     transition: 0.3s;
-    left: 0;
-    right: 0;
   }
 
   @media screen and (max-width: 600px) {
@@ -38,15 +48,30 @@
       margin: 1em;
     }
   }
+
+  :global(html) {
+    background-color: var(--bg-yellow);
+    transition-delay: 0s;
+  }
+
+  :global(html).red-bg {
+    background-color: var(--bg-red);
+    transition-delay: 1s;
+  }
 </style>
 
-<svelte:window bind:innerHeight={windowHeight} bind:innerWidth={windowWidth} />
+<svelte:window
+  bind:innerHeight={windowHeight}
+  bind:innerWidth={windowWidth}
+  bind:scrollY />
 
-<div id="background-shape" style="margin: {toggle ? `0` : `3rem`};">
+<div
+  id="background-shape"
+  style="margin: {toggle ? `0` : windowWidth < 600 ? `1em` : `3rem`};">
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={windowWidth}
-    height={windowHeight}>
+    width={toggle ? windowWidth : windowWidth * 0.9}
+    height={toggle ? windowHeight : shapeHeight}>
     <path
       d="M.165 {shapeHeight}V.62h{topShapeWidth}L{bottomShapeWidth}
       {shapeHeight}z"
@@ -55,9 +80,18 @@
       fill-rule="evenodd" />
   </svg>
 </div>
-
-<Nav {segment} />
+{#if toggle}
+  <AltNav />
+{:else}
+  <Nav {segment} />
+{/if}
 
 <main>
-  <slot />
+  {#if toggle}
+    <div class="container" class:padded={toggle}>
+      <slot />
+    </div>
+  {:else}
+    <slot />
+  {/if}
 </main>

@@ -16,7 +16,7 @@
 
   @media screen and (max-width: 600px) {
     div#nav {
-      width: 100%;
+      width: 90%;
       padding-left: 1em;
     }
   }
