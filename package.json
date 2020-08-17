@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "GetAlinafe",
+  "description": "Official Website for Alinafe Album by Liwu",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
