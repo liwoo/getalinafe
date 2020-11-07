@@ -11,7 +11,7 @@
   let windowWidth;
   let scrollY;
 
-  $: toggle = ["preview", "preorder", "about"].includes(segment);
+  $: toggle = ["preview", "preorder", "about", "track"].includes(segment);
   $: shapeHeightFactor = windowWidth < 600 ? 0.96 : 0.9;
   $: shapeHeight = toggle ? windowHeight : windowHeight * shapeHeightFactor;
   $: topShapeWidth = toggle ? windowWidth : windowWidth * 0.6;

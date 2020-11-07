@@ -1,6 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import SongEntry from "../components/SongEntry.svelte";
+  import BuyButton from "../components/BuyButton.svelte";
   import { fade, fly } from "svelte/transition";
 
   onMount(() => {
@@ -16,7 +17,7 @@
     },
     { title: "Go", duration: "2:31", featuring: "George Kalukusha" },
     { title: "Game Time [FIFA]", duration: "3:15" },
-    { title: "RT", duration: "", featuring: "David Kalilani" },
+    { title: "RT", duration: "3:49", featuring: "David Kalilani" },
     { title: "Not There", duration: "3:22", featuring: "Kim of Diamonds" },
     { title: "Don't Shoot", duration: "4:03", featuring: "Mista Gray" },
     { title: "Winning", duration: "3:33" },
@@ -76,37 +77,15 @@
     color: #ccc;
     margin-bottom: 0rem;
   }
-
-  button {
-    font-weight: bold;
-    margin: 1rem 0;
-    width: 70%;
-    padding: 1rem 0;
-    border-radius: 0.5rem;
-    border: none;
-    background-color: var(--bg-yellow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  button img {
-    height: 25px;
-    width: 25px;
-    margin-right: 0.5rem;
-  }
 </style>
 
 <div>
   <div class="img-container" in:fade={{ delay: 400 }}>
     <img
-      src="/album-art.png"
+      src="https://res.cloudinary.com/tiyeni/image/upload/q_auto/v1601138202/alinafe_art.jpg"
       alt="Alinafe Album Art"
       style="width: 70%; margin: 0px auto;" />
-    <button>
-      <img src="/shopping-cart.png" alt="Shopping Cart" />
-      Preorder Now @MK5,000
-    </button>
+    <BuyButton />
   </div>
   <div in:fly={{ delay: 600, y: 300 }}>
     <div id="summary">

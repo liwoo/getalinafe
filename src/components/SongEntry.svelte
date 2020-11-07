@@ -6,6 +6,10 @@
 </script>
 
 <style>
+  a {
+    text-decoration: none;
+  }
+
   div#song-entry {
     color: white;
     display: flex;
@@ -35,15 +39,15 @@
   }
 </style>
 
-<div id="song-entry">
-  <div id="song-head">
-    <caption>{number + 1}</caption>
-    <h2>
-      {title}
-      {#if featuring}
-        <strong>(ft {featuring})</strong>
-      {/if}
-    </h2>
+<a href="/track">
+  <div id="song-entry">
+    <div id="song-head">
+      <caption>{number + 1}</caption>
+      <h2>
+        {title}
+        {#if featuring}<strong>(ft {featuring})</strong>{/if}
+      </h2>
+    </div>
+    <caption>{duration}</caption>
   </div>
-  <caption>{duration}</caption>
-</div>
+</a>

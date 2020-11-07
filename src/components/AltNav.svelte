@@ -1,5 +1,7 @@
 <script>
-  import { fly } from "svelte/transition";
+  import { fly, fade } from "svelte/transition";
+  import BuyButton from "./BuyButton.svelte";
+  export let scrollY;
 </script>
 
 <style>
@@ -25,6 +27,8 @@
   }
 </style>
 
+<svelte:window bind:scrollY />
+
 <nav in:fly={{ delay: 200, y: -200 }}>
   <div>
     <a href="/">
@@ -36,8 +40,15 @@
       </svg>
     </a>
   </div>
-  <div>
-    <h1>Alinafe Track List</h1>
+  <div
+    style="width: 100%; text-align: center; display: flex; justify-content: center;">
+    {#if scrollY < 450}
+      <h1>Alinafe Track List</h1>
+    {:else}
+      <div>
+        <BuyButton />
+      </div>
+    {/if}
   </div>
   <div />
 </nav>
