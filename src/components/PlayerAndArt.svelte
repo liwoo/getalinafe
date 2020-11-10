@@ -36,12 +36,12 @@
 
   @media screen and (max-width: 750px) {
     .img-container img {
-      width: 50%;
+      width: 40%;
       margin: 0px auto;
     }
 
     .img-container div {
-      margin-top: -3rem;
+      margin-top: -1rem;
     }
   }
 </style>

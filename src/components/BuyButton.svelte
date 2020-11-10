@@ -23,6 +23,12 @@
     align-items: center;
   }
 
+  @media screen and (max-width: 750px) {
+    button {
+      padding: 0.5rem;
+    }
+  }
+
   button img {
     height: 25px;
     width: 25px;

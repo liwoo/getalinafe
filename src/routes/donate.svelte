@@ -48,10 +48,6 @@
       Being an independent artist, I depend on my personal savings to take care
       of recording fees, music videos, promotion etc.
     </h3>
-    <h3 in:fade={{ delay: 1400 }}>
-      When you donate to the cause, you ensure that more people will get to be
-      blessed in the same way you hopefully were!
-    </h3>
     <h2 in:fade={{ delay: 1800 }}>
       🆘
       <br />

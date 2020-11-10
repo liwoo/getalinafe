@@ -218,7 +218,7 @@
       background-color: var(--bg-red);
       left: 0;
       bottom: 0;
-      top: 15%;
+      top: 5%;
       height: 100%;
       z-index: 500;
     }
