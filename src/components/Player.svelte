@@ -10,7 +10,7 @@
     Twitter,
   } from "svelte-share-buttons-component";
 
-  const url = "https://getalinafe.com/preview";
+  const url = "https://getalinafe.com";
   const title = "Download Liwus Alinafe Album FREE";
   const desc =
     "Download Liwus Highly Rated 2020 Album exclusively here, with features from George Kalukusha, Kim of Diamonds, Suffix, Seven OMore, David Kalilani, Mista Gray, Beracah, Grace, Kelvin Sings and more.";

@@ -269,25 +269,6 @@
 <svelte:head>
   <title>Download Alinafe | Liwu</title>
   <!--  Essential META Tags -->
-
-  <meta property="og:title" content="Alinafe by Liwu [2020]" />
-  <meta
-    property="og:description"
-    content="Download Liwus Highly Rated 2020 Album exclusively here, with features from George Kalukusha, Kim of Diamonds, Suffix, Seven OMore, David Kalilani, Mista Gray, Beracah, Grace, Kelvin Sings and more." />
-  <meta
-    property="og:image"
-    content="https://res.cloudinary.com/tiyeni/image/upload/v1601138202/alinafe_art.jpg" />
-  <meta property="og:url" content="https://getalinafe.com" />
-  <meta
-    name="twitter:card"
-    content="Download Liwus Highly Rated 2020 Album exclusively here, with features from George Kalukusha, Kim of Diamonds, Suffix, Seven OMore, David Kalilani, Mista Gray, Beracah, Grace, Kelvin Sings and more." />
-
-  <!--  Non-Essential, But Recommended -->
-
-  <meta property="og:site_name" content="Get Alinafe" />
-  <meta name="twitter:image:alt" content="Alinafe Album Art" />
-
-  <meta name="twitter:site" content="@li_woo" />
 </svelte:head>
 
 <svelte:window bind:innerWidth />

@@ -53,7 +53,7 @@
       <br />
       All Donations of no less that
       <strong>MK1,000</strong>
-      may be made to Dali Mizaya through
+      may be made to Timothy Mizaya through
       <strong>TNM Mpamba</strong>
       (+265 882 49 43 65) or
       <strong>Airtel Money</strong>
