@@ -183,6 +183,12 @@
     cursor: pointer;
   }
 
+  @media screen and (max-width: 750px) {
+    #track-details {
+      margin-top: -1.5rem;
+    }
+  }
+
   #shares {
     margin: 0.5rem;
   }
@@ -345,22 +351,24 @@
           <path d="M46.593 148.696l12.378 13.17v-26.34z" />
         </g>
       </g></svg>
-    <h1>{currentTime > 0 ? `` : `Loading`} {track.title}</h1>
-    <div id="actions">
-      <button
-        disabled={downloading}
-        on:click={downloadFile(track.link, `${track.title}.mp3`, track.title, 'audio/mpeg')}>Download{downloading ? `ing...` : ``}</button>
-      <button on:click={shareSong(track.title)}>Share</button>
-    </div>
-
-    {#if openShares}
-      <div id="shares" in:fly>
-        <Email subject={title} body="{desc} {url}" />
-        <Reddit class="share-button" {title} {url} />
-        <WhatsApp class="share-button" text="{title} {url}" />
-        <Facebook class="share-button" {url} />
-        <Twitter class="share-button" text={title} {url} />
+    <div id="track-details">
+      <h1>{currentTime > 0 ? `` : `Loading`} {track.title}</h1>
+      <div id="actions">
+        <button
+          disabled={downloading}
+          on:click={downloadFile(track.link, `${track.title}.mp3`, track.title, 'audio/mpeg')}>Download{downloading ? `ing...` : ``}</button>
+        <button on:click={shareSong(track.title)}>Share</button>
       </div>
-    {/if}
+
+      {#if openShares}
+        <div id="shares" in:fly>
+          <Email subject={title} body="{desc} {url}" />
+          <Reddit class="share-button" {title} {url} />
+          <WhatsApp class="share-button" text="{title} {url}" />
+          <Facebook class="share-button" {url} />
+          <Twitter class="share-button" text={title} {url} />
+        </div>
+      {/if}
+    </div>
   </div>
 </div>
