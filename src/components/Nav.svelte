@@ -91,22 +91,24 @@
     {#if showNav}
       <ul>
         <li in:fade={{ delay: 500 }}>
-          <a aria-current={segment === undefined ? 'page' : undefined} href=".">
-            preorder
+          <a
+            aria-current={segment === undefined ? 'page' : undefined}
+            href="donate">
+            donate
           </a>
         </li>
         <li in:fade={{ delay: 700 }}>
           <a
             aria-current={segment === 'preview' ? 'page' : undefined}
             href="preview">
-            preview
+            download
           </a>
         </li>
         <li in:fade={{ delay: 900 }}>
           <a
             aria-current={segment === 'preview' ? 'page' : undefined}
-            href="preview">
-            about
+            href="https://liwu.fanlink.to/alinafe">
+            stream
           </a>
         </li>
       </ul>

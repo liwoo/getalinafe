@@ -2,6 +2,7 @@
   import { fly, fade } from "svelte/transition";
   import BuyButton from "./BuyButton.svelte";
   export let scrollY;
+  export let segment;
 </script>
 
 <style>
@@ -43,7 +44,13 @@
   <div
     style="width: 100%; text-align: center; display: flex; justify-content: center;">
     {#if scrollY < 450}
-      <h1>Alinafe Track List</h1>
+      {#if segment === 'preview'}
+        <h1>Alinafe Tracklist</h1>
+      {:else if segment === 'donate'}
+        <h1>Donate</h1>
+      {:else}
+        <h1>About</h1>
+      {/if}
     {:else}
       <div>
         <BuyButton />

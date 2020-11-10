@@ -1,3 +1,15 @@
+<script>
+  import * as sapper from "@sapper/app";
+
+  function goToDonate() {
+    analytics.logEvent("donates", {
+      content_type: "goToDonate",
+      content_id: "fromButton",
+    });
+    sapper.goto("/donate");
+  }
+</script>
+
 <style>
   button {
     font-weight: bold;
@@ -18,6 +30,7 @@
   }
 </style>
 
-<button>
-  <img src="/shopping-cart.png" alt="Shopping Cart" /> Preorder Now @MK5,000
+<button on:click={goToDonate}>
+  <img src="/heart.png" alt="Donate" />
+  Donate From MK1,000
 </button>

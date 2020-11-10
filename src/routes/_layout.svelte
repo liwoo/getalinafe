@@ -11,7 +11,9 @@
   let windowWidth;
   let scrollY;
 
-  $: toggle = ["preview", "preorder", "about", "track"].includes(segment);
+  $: toggle = ["preview", "preorder", "about", "track", "donate"].includes(
+    segment
+  );
   $: shapeHeightFactor = windowWidth < 600 ? 0.96 : 0.9;
   $: shapeHeight = toggle ? windowHeight : windowHeight * shapeHeightFactor;
   $: topShapeWidth = toggle ? windowWidth : windowWidth * 0.6;
@@ -28,7 +30,6 @@
   }
 
   div.container {
-    max-width: 600px;
     margin: 1rem;
   }
 
@@ -65,6 +66,12 @@
     }
   }
 
+  @media screen and (max-width: 750px) {
+    div.container {
+      width: 90%;
+    }
+  }
+
   :global(html) {
     background-color: var(--bg-yellow);
     transition-delay: 0s;
@@ -87,7 +94,7 @@
   style="--window-height: {windowHeight}px; --offset-width: {windowWidth * 0.2}px"
   class:alt={toggle} />
 {#if toggle}
-  <AltNav />
+  <AltNav {segment} />
 {:else}
   <Nav {segment} />
 {/if}
