@@ -7,10 +7,12 @@
   let modalOpen = false;
   let playingTrack;
   let innerWidth;
-  let downloadLoading;
   let stopPlaying = false;
   let prevSong;
   let nextSong;
+  let percent = 0;
+
+  $: downloading = percent === 1 ? false : downloading;
 
   onMount(() => {
     document.getElementsByTagName("html")[0].className = "red-bg";
@@ -128,6 +130,8 @@
   }
 
   async function downloadAlbum() {
+    downloading = true;
+
     analytics.logEvent("downloads", {
       content_type: "album",
       content_id: "album",
@@ -139,9 +143,31 @@
     const fileName = "Alinafe_Liwu [2020].zip";
     const type = "application/zip";
 
-    downloadLoading = true;
-    let blob = await fetch(data).then((r) => r.blob());
-    downloadLoading = false;
+    // Step 1: start the fetch and obtain a reader
+    let response = await fetch(data);
+
+    const reader = response.body.getReader();
+
+    // Step 2: get total length
+    const contentLength = +response.headers.get("Content-Length");
+
+    // Step 3: read the data
+    let receivedLength = 0; // received that many bytes at the moment
+    let chunks = []; // array of received binary chunks (comprises the body)
+    while (true) {
+      const { done, value } = await reader.read();
+
+      if (done) {
+        break;
+      }
+
+      chunks.push(value);
+      receivedLength += value.length;
+
+      percent = receivedLength / contentLength;
+    }
+
+    let blob = new Blob(chunks);
     const a = document.createElement("a");
     a.style.display = "none";
     document.body.appendChild(a);
@@ -317,9 +343,9 @@
         <img src="/pattern-round.png" alt="Alinafe Chitenje Pattern" />
       </div>
       <div>
-        {#if downloadLoading}
+        {#if downloading}
           <h3 transition:fade>
-            Downloading Album (Could take up to 5 Minutes). Please Wait...
+            Downloading Album ({Math.ceil(percent * 100)}%). Please Wait...
           </h3>
         {:else}
           <h2 transition:fade on:click={downloadAlbum}>

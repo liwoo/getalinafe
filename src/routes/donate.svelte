@@ -26,7 +26,15 @@
     background: var(--bg-yellow);
     padding: 1rem;
   }
-  h2 {
+  h4 {
+    color: var(--bg-yellow);
+  }
+
+  a {
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 2px solid var(--bg-yellow);
+    border-radius: 0.2rem;
     color: var(--bg-yellow);
   }
 </style>
@@ -48,7 +56,7 @@
       Being an independent artist, I depend on my personal savings to take care
       of recording fees, music videos, promotion etc.
     </h3>
-    <h2 in:fade={{ delay: 1800 }}>
+    <h4 in:fade={{ delay: 1800 }}>
       🆘
       <br />
       All Donations of no less that
@@ -58,6 +66,8 @@
       (+265 882 49 43 65) or
       <strong>Airtel Money</strong>
       (+265 997 24 54 28)
-    </h2>
+    </h4>
+    <br />
+    <a href="https://paypal.me/daliuja?locale.x=en_US">Donate through PayPal</a>
   </div>
 </div>

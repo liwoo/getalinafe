@@ -27,6 +27,7 @@
   let isPaused = false;
   let previousTrack;
   let audio;
+  let hasError = false;
   let openShares = false;
   let downloading;
 
@@ -118,7 +119,16 @@
 
     // Create an invisible A element
     downloading = true;
-    let blob = await fetch(data).then((r) => r.blob());
+    let blob = await fetch(data)
+      .then((r) => r.blob())
+      .catch((_e) => {
+        downloading = false;
+        hasError = true;
+        analytics.logEvent("errors", {
+          content_type: "album",
+          content_id: "album download",
+        });
+      });
     downloading = false;
     const a = document.createElement("a");
     a.style.display = "none";
