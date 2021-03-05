@@ -1,6 +1,6 @@
 # get-alinafe.com
 
-Just a simple music album website written in Svelte and a lot of CSS!
+Just **a** simple music album website written in Svelte and a lot of CSS!
 
 ### Running the project
 
