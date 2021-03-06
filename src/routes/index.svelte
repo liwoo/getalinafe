@@ -40,7 +40,7 @@
   }
 
   main {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,6 +50,8 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    margin: 0rem 1rem;
   }
   @media screen and (max-width: 850px) {
     .options {
