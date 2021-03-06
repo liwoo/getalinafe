@@ -35,8 +35,8 @@
     padding: 1rem 1.5rem;
     height: 2rem;
     color: white;
+    text-decoration: none;
     border-radius: 0.5rem;
-    margin: 1rem;
   }
 
   main {
@@ -53,7 +53,9 @@
   }
   @media screen and (max-width: 850px) {
     .options {
+      height: 20vh;
       flex-direction: column;
+      justify-content: space-around;
     }
   }
 </style>
