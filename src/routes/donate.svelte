@@ -1,51 +1,13 @@
 <script>
   import { fade } from "svelte/transition";
-  let innerHeight;
+  import Container from "../components/Container.svelte";
 </script>
-
-<style>
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    text-align: center;
-    max-width: 60%;
-    margin: 0 auto;
-  }
-
-  @media screen and (max-width: 600px) {
-    div.container {
-      max-width: 90%;
-    }
-  }
-
-  h1,
-  h3 {
-    background: var(--bg-yellow);
-    padding: 1rem;
-  }
-  h4 {
-    color: var(--bg-yellow);
-  }
-
-  a {
-    text-decoration: none;
-    padding: 0.5rem;
-    border: 2px solid var(--bg-yellow);
-    border-radius: 0.2rem;
-    color: var(--bg-yellow);
-  }
-</style>
 
 <svelte:head>
   <title>Donate | Liwu</title>
 </svelte:head>
 
-<svelte:window bind:innerHeight />
-
-<div class="container" style={`height: ${innerHeight - 50}px;`}>
+<Container>
   <div>
     <h1 in:fade={{ delay: 200 }}>Why Donate?</h1>
     <h3 in:fade={{ delay: 600 }}>
@@ -70,4 +32,23 @@
     <br />
     <a href="https://paypal.me/daliuja?locale.x=en_US">Donate through PayPal</a>
   </div>
-</div>
+</Container>
+
+<style>
+  h1,
+  h3 {
+    background: var(--bg-yellow);
+    padding: 1rem;
+  }
+  h4 {
+    color: var(--bg-yellow);
+  }
+
+  a {
+    text-decoration: none;
+    padding: 0.5rem;
+    border: 2px solid var(--bg-yellow);
+    border-radius: 0.2rem;
+    color: var(--bg-yellow);
+  }
+</style>

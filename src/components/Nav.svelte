@@ -11,6 +11,39 @@
   });
 </script>
 
+<div id="nav">
+  <nav style="--bg-yellow=var(--bg-yellow)">
+    {#if showNav}
+      <ul>
+        <li in:fade={{ delay: 500 }}>
+          <a
+            aria-current={segment === undefined ? "page" : undefined}
+            href="donate"
+          >
+            donate
+          </a>
+        </li>
+        <li in:fade={{ delay: 700 }}>
+          <a
+            aria-current={segment === "preview" ? "page" : undefined}
+            href="preview"
+          >
+            download
+          </a>
+        </li>
+        <li in:fade={{ delay: 900 }}>
+          <a
+            aria-current={segment === "preview" ? "page" : undefined}
+            href="https://liwu.fanlink.to/alinafe"
+          >
+            stream
+          </a>
+        </li>
+      </ul>
+    {/if}
+  </nav>
+</div>
+
 <style>
   div#nav {
     display: flex;
@@ -85,33 +118,3 @@
     }
   }
 </style>
-
-<div id="nav">
-  <nav style="--bg-yellow=var(--bg-yellow)">
-    {#if showNav}
-      <ul>
-        <li in:fade={{ delay: 500 }}>
-          <a
-            aria-current={segment === undefined ? 'page' : undefined}
-            href="donate">
-            donate
-          </a>
-        </li>
-        <li in:fade={{ delay: 700 }}>
-          <a
-            aria-current={segment === 'preview' ? 'page' : undefined}
-            href="preview">
-            download
-          </a>
-        </li>
-        <li in:fade={{ delay: 900 }}>
-          <a
-            aria-current={segment === 'preview' ? 'page' : undefined}
-            href="https://liwu.fanlink.to/alinafe">
-            stream
-          </a>
-        </li>
-      </ul>
-    {/if}
-  </nav>
-</div>

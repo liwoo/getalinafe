@@ -11,14 +11,49 @@
   let windowWidth;
   let scrollY;
 
-  $: toggle = ["preview", "preorder", "about", "track", "donate"].includes(
-    segment
-  );
+  $: toggle = [
+    "preview",
+    "preorder",
+    "about",
+    "track",
+    "donate",
+    "drugs-self-assessment",
+    "alcohol-self-assessment",
+  ].includes(segment);
   $: shapeHeightFactor = windowWidth < 600 ? 0.96 : 0.9;
   $: shapeHeight = toggle ? windowHeight : windowHeight * shapeHeightFactor;
   $: topShapeWidth = toggle ? windowWidth : windowWidth * 0.6;
   $: bottomShapeWidth = toggle ? windowWidth : windowWidth * 0.3;
 </script>
+
+<svelte:window
+  bind:innerHeight={windowHeight}
+  bind:innerWidth={windowWidth}
+  bind:scrollY
+/>
+
+<div
+  id="background-shape"
+  transition:fade
+  style="--window-height: {windowHeight}px; --offset-width: {windowWidth *
+    0.2}px"
+  class:alt={toggle}
+/>
+{#if toggle}
+  <AltNav {segment} />
+{:else}
+  <Nav {segment} />
+{/if}
+
+<main>
+  {#if toggle}
+    <div class="container" class:padded={toggle}>
+      <slot />
+    </div>
+  {:else}
+    <slot />
+  {/if}
+</main>
 
 <style>
   main {
@@ -82,29 +117,3 @@
     transition-delay: 1s;
   }
 </style>
-
-<svelte:window
-  bind:innerHeight={windowHeight}
-  bind:innerWidth={windowWidth}
-  bind:scrollY />
-
-<div
-  id="background-shape"
-  transition:fade
-  style="--window-height: {windowHeight}px; --offset-width: {windowWidth * 0.2}px"
-  class:alt={toggle} />
-{#if toggle}
-  <AltNav {segment} />
-{:else}
-  <Nav {segment} />
-{/if}
-
-<main>
-  {#if toggle}
-    <div class="container" class:padded={toggle}>
-      <slot />
-    </div>
-  {:else}
-    <slot />
-  {/if}
-</main>

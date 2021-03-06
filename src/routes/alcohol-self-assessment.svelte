@@ -1,4 +1,8 @@
 <script>
+  import Container from "../components/Container.svelte";
+
+  import TypeForm from "../components/TypeForm.svelte";
+
   (function () {
     var qs,
       js,
@@ -20,34 +24,8 @@
   })();
 </script>
 
-<main>
-  <div class="container">
-    <div
-      class="typeform-widget"
-      data-url="https://form.typeform.com/to/G2Zju91i?typeform-medium=embed-snippet"
-      style="width: 100%; height: 500px;"
-    />
-  </div>
-</main>
-
-<style>
-  main {
-    width: 80%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .container {
-    display: block;
-    width: 60%;
-    margin: 0 auto;
-  }
-
-  @media screen and (max-width: 600px) {
-    div.container {
-      width: 90%;
-    }
-  }
-</style>
+<Container>
+  <TypeForm
+    href="https://form.typeform.com/to/G2Zju91i?typeform-medium=embed-snippet"
+  />
+</Container>

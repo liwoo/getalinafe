@@ -187,6 +187,79 @@
   }
 </script>
 
+<svelte:head>
+  <title>Download Alinafe | Liwu</title>
+  <!--  Essential META Tags -->
+</svelte:head>
+
+<svelte:window bind:innerWidth />
+
+{#if modalOpen && playingTrack >= 0}
+  <div id="modal" in:fly={{ y: 600 }} out:fly={{ y: 600 }}>
+    <svg
+      on:click={stop}
+      width="10"
+      height="11"
+      xmlns="http://www.w3.org/2000/svg"
+      ><g fill="none" fill-rule="evenodd" stroke="#FFF">
+        <path
+          d="M87 22C87-33.228 42.228-78-13-78S-113-33.228-113 22"
+          stroke-width="4"
+        />
+        <path
+          stroke-linecap="square"
+          d="M9.286 10.312L.714.687M9.286.688L.714 10.313"
+        />
+      </g></svg
+    >
+    <PlayerAndArt
+      track={trackList[Number(playingTrack)]}
+      {stopPlaying}
+      nextTrack={nextSong}
+      on:play={playTrack}
+      trackNumber={playingTrack}
+      prevTrack={prevSong}
+    />
+  </div>
+{/if}
+
+<div class="container">
+  {#if !modalOpen && !stopPlaying}
+    <div id="player-art-container">
+      <PlayerAndArt
+        track={trackList[Number(playingTrack)]}
+        trackNumber={playingTrack}
+        on:play={playTrack}
+        nextTrack={nextSong}
+        prevTrack={prevSong}
+      />
+    </div>
+  {/if}
+  <div in:fly={{ delay: 600, y: 300 }} class="summary-container">
+    <div id="summary">
+      <div id="motif">
+        <img src="/pattern-round.png" alt="Alinafe Chitenje Pattern" />
+      </div>
+      <div>
+        {#if downloading}
+          <h3 transition:fade>
+            Downloading Album ({Math.ceil(percent * 100)}%). Please Wait...
+          </h3>
+        {:else}
+          <h2 transition:fade on:click={downloadAlbum}>
+            Download Alinafe_Liwu.zip [110 MB]
+          </h2>
+        {/if}
+        <h3>13 Songs</h3>
+      </div>
+    </div>
+    {#each trackList as track, i}
+      <!-- content here -->
+      <SongEntry {...track} number={i} on:play={playTrack} />
+    {/each}
+  </div>
+</div>
+
 <style>
   .container {
     display: flex;
@@ -291,73 +364,3 @@
     margin-bottom: 0rem;
   }
 </style>
-
-<svelte:head>
-  <title>Download Alinafe | Liwu</title>
-  <!--  Essential META Tags -->
-</svelte:head>
-
-<svelte:window bind:innerWidth />
-
-{#if modalOpen && playingTrack >= 0}
-  <div id="modal" in:fly={{ y: 600 }} out:fly={{ y: 600 }}>
-    <svg
-      on:click={stop}
-      width="10"
-      height="11"
-      xmlns="http://www.w3.org/2000/svg"><g
-        fill="none"
-        fill-rule="evenodd"
-        stroke="#FFF">
-        <path
-          d="M87 22C87-33.228 42.228-78-13-78S-113-33.228-113 22"
-          stroke-width="4" />
-        <path
-          stroke-linecap="square"
-          d="M9.286 10.312L.714.687M9.286.688L.714 10.313" />
-      </g></svg>
-    <PlayerAndArt
-      track={trackList[Number(playingTrack)]}
-      {stopPlaying}
-      nextTrack={nextSong}
-      on:play={playTrack}
-      trackNumber={playingTrack}
-      prevTrack={prevSong} />
-  </div>
-{/if}
-
-<div class="container">
-  {#if !modalOpen && !stopPlaying}
-    <div id="player-art-container">
-      <PlayerAndArt
-        track={trackList[Number(playingTrack)]}
-        trackNumber={playingTrack}
-        on:play={playTrack}
-        nextTrack={nextSong}
-        prevTrack={prevSong} />
-    </div>
-  {/if}
-  <div in:fly={{ delay: 600, y: 300 }} class="summary-container">
-    <div id="summary">
-      <div id="motif">
-        <img src="/pattern-round.png" alt="Alinafe Chitenje Pattern" />
-      </div>
-      <div>
-        {#if downloading}
-          <h3 transition:fade>
-            Downloading Album ({Math.ceil(percent * 100)}%). Please Wait...
-          </h3>
-        {:else}
-          <h2 transition:fade on:click={downloadAlbum}>
-            Download Alinafe_Liwu.zip [110 MB]
-          </h2>
-        {/if}
-        <h3>13 Songs</h3>
-      </div>
-    </div>
-    {#each trackList as track, i}
-      <!-- content here -->
-      <SongEntry {...track} number={i} on:play={playTrack} />
-    {/each}
-  </div>
-</div>

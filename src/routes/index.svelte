@@ -23,9 +23,7 @@
 <main>
   {#if showImage}
     <div class="options" in:fade>
-      <a href="alcohol-self-assessment">
-        Take the Alcohol Self Assessment Test
-      </a>
+      <a href="alcohol-self-assessment"> Take the Alcohol Self Assessment </a>
       <a href="drugs-self-assessment"> Take the Drugs Self Assessment Test </a>
     </div>
   {/if}
